@@ -10,8 +10,8 @@ const start = async () => {
     console.log('Connect is done')
     // await client.db().createCollection('users')
     const users = client.db().collection('users')
-    await users.insertOne({name: 'ulbi tv1', age: 25})
-    const user = await users.findOne({name: 'ulbi tv1'})
+    await users.insertOne({name: 'ulbi tv2', age: 27})
+    const user = await users.findOne({name: 'ulbi tv2'})
     console.log(user)
   } catch (e) {
     console.log(e)

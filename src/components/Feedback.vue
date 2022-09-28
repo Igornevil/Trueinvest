@@ -32,7 +32,25 @@
       },
       methods: {
         onSubmit() {
-          console.log('Submit','Name - ', this.name, 'Email - ', this.email, 'Telegram', this.media)
+          axios({
+            method: 'post',
+            url: 'http://176.104.33.48:3200/api/users',
+            data: {
+              name: this.name,
+              email: this.email,
+              media: this.media
+            },
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+          })
+          .then(function(response) {
+            console.log('Ответ сервера успешно получен!');
+          })
+          .catch(function(error) {
+            console.log(error);
+          })
+
           this.name = ''
           this.email = ''
           this.media = ''
@@ -44,7 +62,6 @@
 <style scoped>
 
     .feedback {
-
         /*border: 1px solid red;*/
         min-height: 500px;
         background-color: white;
