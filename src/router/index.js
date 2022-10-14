@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import Home from '../views/Home.vue'
-import PersonDat from "@/components/PersonDat";
+import PostId from '../views/PostId.vue'
+
 
 const routes = [
   {
@@ -9,15 +9,6 @@ const routes = [
     name: 'start',
     component: Home
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separ ate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-
   {
     path: '/home',
     name: 'home',
@@ -27,21 +18,27 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
   },
   {
-    path: '/private',
-    name: 'private',
+    path: '/addPosts',
+    name: 'addPosts',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/PrivateAccaunt.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/addPosts.vue')
   },
   {
-    path: '/private/PersonDat',
-    name: 'PersonDat',
+    path: '/Posts',
+    name: 'Posts',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/PersonDat.vue')
-  }
+    component: () => import(/* webpackChunkName: "about" */ '../views/Posts.vue')
+  },
+  {
+    path: '/posts/:id',
+    component: PostId,
+    name: 'postId',
+    props: true
+  },
 ]
 
 const router = createRouter({

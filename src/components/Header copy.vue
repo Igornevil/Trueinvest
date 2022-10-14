@@ -8,11 +8,9 @@
           </div>
           <nav class="header__menu">
             <ul class="header__list">
-              <li> <a href="#" class="header__link" data-bs-toggle="modal" data-bs-target="#exampleModal">Заказать разбор графика</a></li>
               <li v-for="(item, index) in items"
                     v-bind:key="index">
                 <a class="header__link" v-bind:href="item.site"> {{ item.label }} </a>
-                <span v-if="item.hiden" class="header__arrow arrow"></span>
                 <ul v-if="item.hiden"  class="sub-header__list">
                         <li v-for="(i, index) in item.hiden"
                             v-bind:key="index">
@@ -29,72 +27,56 @@
 </template>
 
 <script>
-export default {
 
-  data() {
-    return {
-      isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-      name: '',
-      message: '',
-      items: [
-        {label: "Обучение", site: "#"},
-        {
-            label: "Новости", site: location.origin + '/posts'
-        },
-        {
-        label: "Открыть счет", site: "#", hiden: [
-        {label: "Just2Trade", site: "https://just2trade.online/ref/TRUEINVESTOR"},
-        {
-            label: "Finam",
-            site: "https://www.finam.ru/open/order/russia?AgencyBackOfficeID=110&agent=25538531-713f-4425-a253-6e5b0d2eb75f"
-        }
-            ]
-        },
-        {label: "Контакты", site: "#"},
-      ]
-    }
-  },
-  methods: { 
-    sub() {
-      document.querySelector('.header__burger').classList.toggle('active')
-      document.querySelector('.header__menu').classList.toggle('active')
-      document.querySelector('body').classList.toggle('lock')
+  export default {
+
+    data() {
+        return {
+        name: '',
+        message: '',
+        items: [
+            //{label: "Разбор графиков на заказ", site: "#", id: "exampleModal1", type: 'button', toggle: 'modal'},
+            {label: "Обучение", site: "#"},
+            {
+                label: "Новости", site: location.origin + '/posts', hiden: [
+                ]
+            },
+            {
+            label: "Открыть счет", site: "#", hiden: [
+            {label: "Just2Trade", site: "https://just2trade.online/ref/TRUEINVESTOR"},
+            {
+                label: "Finam",
+                site: "https://www.finam.ru/open/order/russia?AgencyBackOfficeID=110&agent=25538531-713f-4425-a253-6e5b0d2eb75f"
+            }
+                ]
+            },
+            {label: "Контакты", site: "#"},
+            // {label: "Личный кабинет", site: "/private"},
+        ],
+
+        isActive: false,
+
+        };
     },
-    onSubmit() {
-      console.log('Submit','Name - ', this.name, 'Message - ', this.message)
-      this.name = ''
-      this.message = ''
-    },
-    isTouch() {
-      if(this.isMobile) {
-        document.querySelector('body').classList.add('touch');
-        let arrows = document.querySelectorAll('.arrow');
-        arrows.forEach(arrow => {
-          let thislink = arrow.previousElementSibling;
-          let subMenu = arrow.nextElementSibling;
-          let thisArrow = arrow;
-          
-          thislink.classList.add('parent')
-          arrow.addEventListener('click', function() {
-            subMenu.classList.toggle('open');
-            thisArrow.classList.toggle('active');
-          })
-        })
-      }else{
-        document.querySelector('body').classList.add('mouse')
-      }
-    }
-  },
-  computed: {
+    methods: {
+        
+        sub() {
+            document.querySelector('.header__burger').classList.toggle('active')
+            document.querySelector('.header__menu').classList.toggle('active')
+            document.querySelector('body').classList.toggle('lock')
+        },
+        onSubmit() {
+            console.log('Submit','Name - ', this.name, 'Message - ', this.message)
+            this.name = ''
+            this.message = ''
+            }
+        },
 
-  },
-  mounted() {
-    this.isTouch();
-  },
-  created() {
-
-  },
-}
+        mounted() {
+        },
+        created() {
+        },
+  }
 
 
 
@@ -119,13 +101,9 @@ html,body{
 .header {
   position: fixed;
   width: 100%;
-  height: max-content;
   top: 0;
   left: 0;
   z-index: 50;
-}
-.header a.parent {
-  margin-right: 10px;
 }
 .header:before{
   content: '';
@@ -150,46 +128,32 @@ html,body{
 .header__burger {
   display: none;
 }
-.header__menu {
-  width: 100%;
-  height: 100%;
-}
+.header__menu {}
 .header__list {
   display: flex;
-  /* align-items: center; */
-  position: absolute;
-  top: 14px;
-  right: 0;
+  position: relative;
   z-index: 2;
 }
 .header__list li {
   list-style: none;
-  margin: 0px 19px 0px 0px;
+  margin: 0px 0px 0px 20px;
 }
-
+.header__list li:hover .sub-header__list{
+  display: block;
+}
 .header__link {
-  position: relative;
   color: #fff;
   text-transform: uppercase;
-  font-size: 15px;
-  text-decoration: none;
-}
-.sub-header__link {
-  position: relative;
-  color: #fff;
-  font-size: 15px;
+  font-size: 18px;
   text-decoration: none;
 }
 .sub-header__list {
   display: none;
-  position: relative;
-  margin-top: 13px;
-  background-color: #4B4A4A;
-  
-}
-.sub-header__list li {
-  padding: 10px;
-  text-align: start;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  /* background-color: #4B4A4A; */
+  background-color: #ccc;
 }
 .sub-header__link {
   color: #fff;
@@ -264,46 +228,13 @@ html,body{
   }
   .header__list {
     display: block;
-    position: relative;
   }
   .header__list li {
     margin: 0 0 20px 0;
-    position: relative;
   }
-  .sub-header__list li {
-  text-align: center;
-}
-}
-
-.arrow { 
-  display: none;
-  position: absolute;
-  width: 0;
-  top: 9px;
-  height: 0;
-  border-top: 7px solid #fff;
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
-
-}
-.arrow.active {
-  /* position: absolute; */
-  transform: rotate(-180deg);
-  top: 9px;
-}
-.header__arrow {
 
 }
 
-body.mouse .header__list li:hover .sub-header__list{
-  display: block;
-}
-body.touch .sub-header__list.open{
-  display: block;
-}
-body.touch .arrow {
-  display: initial;
-}
 </style>
 <style>
 @media (max-width:767px) {

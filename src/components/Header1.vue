@@ -8,7 +8,7 @@
           </div>
           <nav class="header__menu">
             <ul class="header__list">
-              <li> <a href="#" class="header__link" data-bs-toggle="modal" data-bs-target="#exampleModal">Заказать разбор графика</a></li>
+              <li> <a href="#" class="header__link">Заказать рабор графика</a></li>
               <li v-for="(item, index) in items"
                     v-bind:key="index">
                 <a class="header__link" v-bind:href="item.site"> {{ item.label }} </a>
@@ -29,6 +29,9 @@
 </template>
 
 <script>
+import { doc } from 'prettier'
+
+
 export default {
 
   data() {
@@ -37,6 +40,7 @@ export default {
       name: '',
       message: '',
       items: [
+        //{label: "Разбор графиков на заказ", site: "#", id: "exampleModal1", type: 'button', toggle: 'modal'},
         {label: "Обучение", site: "#"},
         {
             label: "Новости", site: location.origin + '/posts'
@@ -51,6 +55,7 @@ export default {
             ]
         },
         {label: "Контакты", site: "#"},
+        // {label: "Личный кабинет", site: "/private"},
       ]
     }
   },
@@ -67,6 +72,17 @@ export default {
     },
     isTouch() {
       if(this.isMobile) {
+        document.querySelector('body').classList.add('touch')
+      }else{
+        document.querySelector('body').classList.add('mouse')
+      }
+    }
+  },
+  computed: {
+
+  },
+  mounted() {
+    if(this.isMobile) {
         document.querySelector('body').classList.add('touch');
         let arrows = document.querySelectorAll('.arrow');
         arrows.forEach(arrow => {
@@ -83,13 +99,6 @@ export default {
       }else{
         document.querySelector('body').classList.add('mouse')
       }
-    }
-  },
-  computed: {
-
-  },
-  mounted() {
-    this.isTouch();
   },
   created() {
 
@@ -119,7 +128,6 @@ html,body{
 .header {
   position: fixed;
   width: 100%;
-  height: max-content;
   top: 0;
   left: 0;
   z-index: 50;
@@ -156,9 +164,8 @@ html,body{
 }
 .header__list {
   display: flex;
-  /* align-items: center; */
   position: absolute;
-  top: 14px;
+  top: 12px;
   right: 0;
   z-index: 2;
 }

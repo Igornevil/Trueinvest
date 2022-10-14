@@ -21,17 +21,13 @@
 
     .News {
         width: auto;
+        max-width: 1400px;
         height: auto;
         display: flex;
         justify-content: center;
-        /*display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        background-color: #484849;
-        opacity: 0.54; */
-        align-items: center;
+        
         min-height: 500px ;
-        margin: 10px;
+        margin: 0 auto;
         padding: 25px 0px;
         border-bottom: 4px solid gray;
     }

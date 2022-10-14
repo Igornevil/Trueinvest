@@ -62,15 +62,15 @@
 <style scoped>
 
     .feedback {
-        /*border: 1px solid red;*/
+        /* border: 1px solid red; */
+        width: auto;
+        max-width: 1400px;
+        height: auto;
         min-height: 500px;
         background-color: white;
-        margin: 0 15px;
-        width: auto;
-        height: auto;
+        margin: 1rem auto;
         display: flex;
         justify-content: center;
-        align-items: center;
         flex-wrap: wrap;
     }
     .desc {

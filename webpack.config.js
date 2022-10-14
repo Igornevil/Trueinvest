@@ -14,6 +14,6 @@ module.exports = {
         "os": false, 
         "stream": false,
         "zlib": false
-      },
-    },
-  };
+      },asdd
+    },sadass
+  };sadas

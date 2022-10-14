@@ -21,12 +21,12 @@
         /*border: 1px solid red;*/
         min-height: 500px;
         background-color: white;
-        margin: 0 15px;
+        margin: 0 auto;
         width: auto;
+        max-width: 1400px;
         height: auto;
         display: flex;
         justify-content: center;
-        align-items: center;
         flex-wrap: wrap;
         border-bottom: 4px solid gray;
     }
@@ -48,7 +48,7 @@
         /*border: 1px solid red;*/
         min-height: 400px;
         background-color: white;
-        width: 99%;
+        width: 95%;
         height: auto;
         display: flex;
         align-items: center;

@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import store from './store/index.js'
 import router from './router'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
-import axios from 'axios'
+
+
 window.axios = require('axios');
-import cors from 'cors'
 
 
 const app = createApp(App);
-app.use(router).mount('#app')
+app.use(router).use(store).mount('#app')
