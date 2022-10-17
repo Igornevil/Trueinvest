@@ -1,30 +1,29 @@
 <template>
-  
-    <header class="header">
-      <div class="container">
-        <div class="header__body">
-          <div class="header__burger" v-on:click=sub()>
-            <span></span>
-          </div>
-          <nav class="header__menu">
-            <ul class="header__list">
-              <li> <a href="#" class="header__link" data-bs-toggle="modal" data-bs-target="#exampleModal">Заказать разбор графика</a></li>
-              <li v-for="(item, index) in items"
-                    v-bind:key="index">
-                <a class="header__link" v-bind:href="item.site"> {{ item.label }} </a>
-                <span v-if="item.hiden" class="header__arrow arrow"></span>
-                <ul v-if="item.hiden"  class="sub-header__list">
-                        <li v-for="(i, index) in item.hiden"
-                            v-bind:key="index">
-                            <a v-bind:href="i.site" class="sub-header__link" target="_blank">{{ i.label }}</a>
-                        </li>
-                    </ul>
-              </li>
-            </ul>
-          </nav>
+  <header class="header">
+    <div class="container">
+      <div class="header__body">
+        <div class="header__burger" v-on:click=sub()>
+          <span></span>
         </div>
+        <nav class="header__menu">
+          <ul class="header__list">
+            <li> <a href="#" class="header__link" data-bs-toggle="modal" data-bs-target="#exampleModal">Заказать разбор графика</a></li>
+            <li v-for="(item, index) in items"
+                  v-bind:key="index">
+              <a class="header__link" v-bind:href="item.site"> {{ item.label }} </a>
+              <span v-if="item.hiden" class="header__arrow arrow"></span>
+              <ul v-if="item.hiden"  class="sub-header__list">
+                      <li v-for="(i, index) in item.hiden"
+                          v-bind:key="index">
+                          <a v-bind:href="i.site" class="sub-header__link" target="_blank">{{ i.label }}</a>
+                      </li>
+                  </ul>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </header>
+    </div>
+  </header>
   
 </template>
 
@@ -107,7 +106,7 @@ export default {
   bottom: 0;
   box-sizing: border-box;
 }
-html,body{
+ html,body{
   height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
@@ -304,6 +303,7 @@ body.touch .sub-header__list.open{
 body.touch .arrow {
   display: initial;
 }
+
 </style>
 <style>
 @media (max-width:767px) {

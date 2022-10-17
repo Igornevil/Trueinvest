@@ -20,10 +20,10 @@
     .study {
         /*border: 1px solid red;*/
         min-height: 500px;
-        background-color: white;
-        margin: 0 auto;
-        width: auto;
         max-width: 1400px;
+        margin: 0 auto;
+        background-color: white;
+        width: auto;  
         height: auto;
         display: flex;
         justify-content: center;

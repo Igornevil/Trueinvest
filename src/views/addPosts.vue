@@ -13,7 +13,7 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Add from '@/components/PostsAdd.vue'
-import end from '@/js/myJs.js'
+import end from '@/js/tinymce.min.js'
 
 export default {
 name: 'Home',

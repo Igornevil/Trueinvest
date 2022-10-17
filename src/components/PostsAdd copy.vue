@@ -21,94 +21,89 @@
     </div>
     <button type="submit" class="btn btn-primary mt-2">Отправить</button>
     </form>
-
+    <!-- <div class="feedback">
+        <div class="form">
+            <div class="form-1">
+                <form @submit.prevent="onSubmit">
+                    <label>Автор:</label><br>
+                    <input type="text" v-model="author"><br><br>
+                    <label>Заголовок:</label><br>
+                    <input type="text" v-model="title"><br><br>
+                    <label>Content:</label><br>
+                    <textarea type="text" v-model="content"/><br><br>
+                    <label>Файл:</label><br>
+                    <input type="file" id="file"><br><br>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div> -->
 
 </template>
-
 <script>
-import { mapActions,mapGetters } from 'vuex';
+    export default {
+      data() {
+        return {
+          author: '',
+          title: '',
+          content: '',
+          sendForm: new FormData(),
 
-export default {
-  data() {
-    return {
-      author: '',
-      title: '',
-      content: '',
-      sendForm: new FormData(),
+        }
+      },
+      methods: {
+        getAll() {
+            axios({
+            method: 'get',
+            url: 'http://176.104.33.48:3200/api/posts',
+          })
+          .then(function(response) {
+            console.log('Ответ сервера успешно получен!');
+          })
+          .catch(function(error) {
+            console.log(error);
+          })
+         },
+          onSubmit() {
+            const selectedFile = document.getElementById('formFileLg').files[0];
+            this.sendForm.append('author', this.author)
+            this.sendForm.append('title', this.title)
+            this.sendForm.append('content', this.content)
+            this.sendForm.append('picture', selectedFile)
 
+            console.log(this.sendForm);
+          axios({
+            method: 'post',
+            url: 'http://176.104.33.48:3200/api/posts',
+            data: this.sendForm,
+            headers: {
+              "Content-type": "multipart/form-data"
+            }
+          })
+          .then(function(response) {
+            console.log('Ответ сервера успешно получен!');
+            location.reload() // window.location.reload()
+          })
+          .catch(function(error) {
+            console.log(error);
+          })
+
+          // location.reload() // window.location.reload()
+        //   this.author = ''
+        //   this.title = ''
+        //   this.content = ''
+        //   selectedFile.value = ''
+         }
+      }
+      
     }
-  },
-  mounted() {
-    tinymce.init({
-    selector: 'textarea',
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-    mergetags_list: [
-      { value: 'First.Name', title: 'First Name' },
-      { value: 'Email', title: 'Email' },
-      ]
-    });
-  },
-  methods: {
-    ...mapActions([
-      'SET_POSTS'
-    ]),
-    getAll() {
-      axios({
-        method: 'get',
-        url: 'http://176.104.33.48:3200/api/posts',
-      })
-      .then(function(response) {
-        console.log('Ответ сервера успешно получен!');
-        console.log(response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
-    },
-    onSubmit() {
-      const selectedFile = document.getElementById('formFileLg').files[0];
-      this.sendForm.append('author', this.author)
-      this.sendForm.append('title', this.title)
-      this.sendForm.append('content', tinymce.activeEditor.getContent())
-      this.sendForm.append('picture', selectedFile)
-
-      this.SET_POSTS(this.sendForm)
-
-
-    // axios({
-    //   method: 'post',
-    //   url: 'http://176.104.33.48:3200/api/posts',
-    //   data: this.sendForm,
-    //   headers: {
-    //     "Content-type": "multipart/form-data"
-    //   }
-    // })
-    // .then(function(response) {
-    //   console.log('Ответ сервера успешно получен!');
-    //   location.reload() // window.location.reload()
-    // })
-    // .catch(function(error) {
-    //   console.log(error);
-    // })
-
-  //   this.author = ''
-  //   this.title = ''
-  //   this.content = ''
-  //   selectedFile.value = ''
-    }
-  }
-}
 </script>
 
 <style scoped>
 
     .addpost {
       max-width: 90%;
-      margin: 10px auto;
-      margin-top: 100px;  
+      margin: 10px auto;  
     }
 
     .feedback {

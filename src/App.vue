@@ -4,10 +4,10 @@
 
 
 <style>
+@import './css/normalize.css';
 @import '~bootstrap/dist/css/bootstrap.css';
 body {
-  margin: 0;
-  padding: 0;
+  
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

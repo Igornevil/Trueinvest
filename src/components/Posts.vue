@@ -2,23 +2,17 @@
     <div class="Posts">
             <h1><a href="#">Новости</a></h1>
             <div class="block">        
-                <div    class="post"
-                        v-for="(post, index) in POSTS.slice(0, 4)"
-                        v-bind:key="index">
-                            <img :src=getUrl(post.picture)>
-                            <h4><a v-bind:href="'posts/' + post._id">{{post.title.substring(0,15)}}...</a></h4>
-                            <p>{{post.content.substring(0,93)}}<a href="#">{{post.content.substring(93,100)}}</a></p>
-                            <div class="date-post">
-                                <p>{{post.author}}</p>
-                                <p>{{post.date}}</p>                       
-                            </div>
-                </div>
+                <postElem v-for="(post, index) in POSTS.slice(POSTS.length - 4, POSTS.length).reverse()"
+                    v-bind:key="index"
+                    v-bind:post="post"
+                />
             </div>
         </div>
 </template>
 <script>
 
 import { mapActions,mapGetters } from 'vuex';
+import postElem from '@/components/post-elem.vue';
 
     export default {
 
@@ -26,6 +20,9 @@ import { mapActions,mapGetters } from 'vuex';
             return {
                  posts: null
             }
+        },
+        components: {
+            postElem
         },
         computed: {
             ...mapGetters([
@@ -44,6 +41,7 @@ import { mapActions,mapGetters } from 'vuex';
         },
         mounted() {
             this.GET_POSTS_ALL()
+            
         }
     }
 </script>

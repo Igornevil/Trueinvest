@@ -1,46 +1,30 @@
 <template>
     <section class="fourElem">
-        <div 
-            class="elem elem1"
-            :class="{
-                active: isActive,
-            }">
+        <div class="elem elem1">
             <div class="content">
-                <h2 :class="{ 'h2-active': isActive }">Точки входа по российским фьючерсам</h2>
-                <p :class="{ 'p-active': isActive }">Мы торгуем 8 российскими фьючерсами и 2 росссийскими бумагами. MX, RI, SI, SBRF, GAZR, SPYF, BRENT, VTBR, MGNT, YNDX.</p>
+                <h2>Точки входа по российским фьючерсам</h2>
+                <p>Мы торгуем 8 российскими фьючерсами и 2 росссийскими бумагами. MX, RI, SI, SBRF, GAZR, SPYF, BRENT, VTBR, MGNT, YNDX.</p>
                 <a href="#">Узнать подробней →</a>
             </div>
         </div>
-        <div 
-            class="elem elem2"
-            :class="{
-                active: isActive,
-            }">
+        <div class="elem elem2">
             <div class="content">
-                <h2 :class="{ 'h2-active': isActive }">Точки входа по 6-ти криптомонетам</h2>
-                <p :class="{ 'p-active': isActive }">Мы торгуем шестью самыми крупными по капитализации монетами и готовы Вам предложить самые выгодные сделки в соотношении Profit/Loss</p>
+                <h2>Точки входа по 6-ти криптомонетам</h2>
+                <p>Мы торгуем шестью самыми крупными по капитализации монетами и готовы Вам предложить самые выгодные сделки в соотношении Profit/Loss</p>
                 <a href="#">Узнать подробней →</a>
             </div>
         </div>
-        <div 
-            class="elem elem3"
-            :class="{
-                active: isActive,
-            }">
+        <div class="elem elem3">
             <div class="content">
-                <h2 class="color-white" :class="{ 'h2-active': isActive }">Ежедневная торговля насдаком</h2>
-                <p class="color-white" :class="{ 'p-active': isActive }">Моя самая любимая торговля - использование long ETF на тройной насдак и обратное движение на него. Используем TQQQ & SQQQ</p>
+                <h2 class="color-white">Ежедневная торговля насдаком</h2>
+                <p class="color-white">Моя самая любимая торговля - использование long ETF на тройной насдак и обратное движение на него. Используем TQQQ & SQQQ</p>
                 <a class="color-white" href="#">Моя статистика →</a>
             </div>
         </div>
-        <div 
-            class="elem elem4 "
-            :class="{
-                active: isActive,
-            }">
+        <div class="elem elem4 ">
             <div class="content ">
-                <h2 class="color-white" :class="{ 'h2-active': isActive }">Торговый план</h2>
-                <p class="color-white" :class="{ 'p-active': isActive }">Составим торговый план по выбранному активу на ТФ - месячный, недельный, дневной.</p>
+                <h2 class="color-white">Торговый план</h2>
+                <p class="color-white">Составим торговый план по выбранному активу на ТФ - месячный, недельный, дневной.</p>
                 <a class="color-white" href="#">Сделать заказ →</a>
             </div>
         </div>
@@ -52,31 +36,17 @@
 export default {
     data() {
         return {
-            isActive: false,
-            window: {
-                width: 0,
-                height: 0
-            }
+            
         }
     },
     created() {
-        window.addEventListener('resize', this.handleResize);
-        this.handleResize();
+
     },
     destroyed() {
-        window.removeEventListener('resize', this.handleResize);
+
     },
     methods: {
-        handleResize() {
-            this.window.width = window.innerWidth;
-            this.window.height = window.innerHeight;
 
-            if (this.window.width < 775) {
-                this.isActive = false
-            } else {
-                this.isActive = true
-            }
-        }
     },
     watch: {
 
@@ -87,7 +57,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url(../css/colus_regular.css);
 .elem {
     border-radius: 20px;
@@ -102,6 +72,7 @@ export default {
     flex-wrap: wrap;
     max-width: 1400px;
     margin: 0 auto;
+    border-bottom: 4px solid gray;
 }
 .elem1 {
     background: url('../img/Frame_1560.png')no-repeat;
@@ -114,6 +85,7 @@ export default {
 .elem3 {
     background: url('../img/qq2.webp')no-repeat;
     background-size: cover;
+   
 }
 .elem4 {
     background: url('../img/Frame_1559.webp')no-repeat;
@@ -169,5 +141,21 @@ a {
 }
 .color-white {
     color: white
+}
+@media (min-width:767px) {
+    .content {
+
+
+        h2 {
+            font-size: 25px;
+        }
+        p {
+            font-size: 13px;
+        }
+    }
+    .elem {
+        width: 560px;
+        height: 273px;
+    }
 }
 </style>

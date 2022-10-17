@@ -1,29 +1,39 @@
 <template>
     <Header />
-    <Add />
+    <OnePost 
+        v-bind:_id="id"
+    />
     <Footer/>
 
 </template>
 
 <script>
 // @ is an alias to /src
+// v-bind:_id="this.$route.params.id"
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import Add from '@/components/OnePost.vue'
-import end from '@/js/myJs.js'
+import OnePost from '@/components/OnePost.vue'
 
 export default {
     name: 'PostId',
     components: {
         Header,
         Footer,
-        Add,
-        end
+        OnePost
+    },
+    props:{
+        id: {
+            type: String,
+            default: ''
+        } 
     },
 }
 
 </script>
 
-<style scoped>
+<style >
+img {
+    max-width: 100%;
+}
 
 </style>

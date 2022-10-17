@@ -1,5 +1,5 @@
 <template>
-    <div class="News">
+    <div class="news">
         <div class="news-preview">
             <div class="news-img">
                 <img src="../img/tg1.png">
@@ -19,7 +19,7 @@
 
 <style scoped>
 
-    .News {
+    .news {
         width: auto;
         max-width: 1400px;
         height: auto;
@@ -32,11 +32,8 @@
         border-bottom: 4px solid gray;
     }
     .news-preview {
-        /*border: 1px solid red;*/
         display: flex;
         align-items: center;
-        /*justify-content: space-around;*/
-        /*justify-content: space-evenly;*/
         justify-content: center;
         flex-wrap: wrap;
         color: black;
