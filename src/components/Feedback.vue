@@ -67,7 +67,7 @@
         max-width: 1400px;
         height: auto;
         min-height: 500px;
-        background-color: white;
+
         margin: 1rem auto;
         display: flex;
         justify-content: center;
@@ -92,9 +92,7 @@
 
     }
     .form {
-        /*border: 1px solid red;*/
         min-height: 400px;
-        background-color: white;
         width: auto;
         height: auto;
         display: flex;
@@ -109,10 +107,12 @@
         height: 40px;
         width: 140px;
         font-size: 20px;
+        border-radius: 24px;
     }
     input {
         font-size: 20px;
         width: 100%;
         height: 30px;
+        border-radius: 24px;
     }
 </style>

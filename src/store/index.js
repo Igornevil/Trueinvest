@@ -24,7 +24,8 @@ export default createStore({
   },
   actions: {
     GET_POSTS_ALL({commit}) {
-      return axios.get('http://176.104.33.48:3200/api/posts')
+      // return axios.get('http://176.104.33.48:3200/api/posts')
+      return axios.get('http://' + window.location.hostname + ':3200/api/posts')
       .then((posts) => {
         commit('SET_POSTS_ALL', posts.data);
         return posts;
@@ -36,7 +37,7 @@ export default createStore({
     },
 
     GET_POSTS_ID({commit}, id) {
-      return axios.get('http://176.104.33.48:3200/api/posts/' + id)
+      return axios.get('http://' + window.location.hostname + ':3200/api/posts/' + id)
       .then((post) => {
         commit('SET_POSTS_ID', post.data);
         return post;

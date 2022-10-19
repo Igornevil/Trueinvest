@@ -22,7 +22,6 @@
         min-height: 500px;
         max-width: 1400px;
         margin: 0 auto;
-        background-color: white;
         width: auto;  
         height: auto;
         display: flex;
@@ -47,7 +46,6 @@
     .youtube {
         /*border: 1px solid red;*/
         min-height: 400px;
-        background-color: white;
         width: 95%;
         height: auto;
         display: flex;

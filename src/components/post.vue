@@ -17,7 +17,7 @@
 
         data() {
             return {
-                 posts: null
+                posts: null
             }
         },
         components: {
@@ -96,6 +96,7 @@
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        
     }
     a {
         text-decoration: none;

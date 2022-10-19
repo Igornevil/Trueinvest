@@ -1,46 +1,38 @@
-<template>
-    <div class="Posts">
-            <h1><a href="#">Новости</a></h1>
-            <div class="block">        
-                <postElem v-for="(post, index) in POSTS.slice(POSTS.length - 3, POSTS.length).reverse()"
-                    v-bind:key="index"
-                    v-bind:post="post"
-                />
+<template>     
+    <div class="post">
+            <img :src=getUrl(post.picture)>
+            <h4><a v-bind:href="'posts/' + post._id">{{post.title.substring(0,15)}}...</a></h4>
+            <p>{{post.content.substring(0,93)}}<a href="#">{{post.content.substring(93,100)}}</a></p>
+            <div class="date-post">
+                <p>{{post.author}}</p>
+                <p>{{post.date}}</p>                       
             </div>
-        </div>
+    </div>
+
 </template>
 <script>
-
-import { mapActions,mapGetters } from 'vuex';
-import postElem from '@/components/post-elem.vue';
 
     export default {
 
         data() {
             return {
-                 posts: null
             }
         },
-        components: {
-            postElem
+        props:{
+            post: {
+                type: [],
+                default: null
+            } 
         },
         computed: {
-            ...mapGetters([
-                'POSTS'
-            ]),
         },
         methods: {
-            ...mapActions([
-                'GET_POSTS_ALL'
-            ]),
-
             getUrl(img) {
                 const response = 'http://176.104.33.48:3200/' + img;
                 return response
             },
         },
         mounted() {
-            this.GET_POSTS_ALL()
             
         }
     }

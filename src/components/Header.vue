@@ -7,6 +7,7 @@
         </div>
         <nav class="header__menu">
           <ul class="header__list">
+            <li v-if="path != '/'"> <a :href="origin" class="header__link">На главную</a></li>
             <li> <a href="#" class="header__link" data-bs-toggle="modal" data-bs-target="#exampleModal">Заказать разбор графика</a></li>
             <li v-for="(item, index) in items"
                   v-bind:key="index">
@@ -32,6 +33,8 @@ export default {
 
   data() {
     return {
+      path: window.location.pathname,
+      origin: window.location.origin,
       isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
       name: '',
       message: '',
@@ -99,7 +102,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 *,*:before,*:after{
   padding: 0;
   margin: 0;
@@ -199,8 +202,8 @@ export default {
     height: 50px;
   }
   .header:before {
-  height: 50px;
-}
+    height: 50px;
+  }
   .header__burger {
     display: block;
     position: relative;
@@ -286,7 +289,6 @@ export default {
 
 }
 .arrow.active {
-  /* position: absolute; */
   transform: rotate(-180deg);
   top: 9px;
 }
